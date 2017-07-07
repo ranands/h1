@@ -1,0 +1,80 @@
+----REPLACE SHANKAA WITH YOUR SCHEMA NAME 
+
+---- Create Product table
+create column table "SHANKAA"."PRODUCT"( 
+      "PRODUCT_ID" INTEGER, 
+      "PRODUCT_NAME" VARCHAR (100),
+      primary key ("PRODUCT_ID")
+); 
+
+insert into "SHANKAA"."PRODUCT" values(1,'Shirts'); 
+insert into "SHANKAA"."PRODUCT" values(2,'Jackets'); 
+insert into "SHANKAA"."PRODUCT" values(3,'Trousers'); 
+insert into "SHANKAA"."PRODUCT" values(4,'Coats'); 
+insert into "SHANKAA"."PRODUCT" values(5,'Purse'); 
+-- Create Region table 
+create column table "SHANKAA"."REGION"(
+      "REGION_ID" INTEGER, 
+      "REGION_NAME" VARCHAR (100),
+      "SUB_REGION_NAME" VARCHAR (100),
+      PRIMARY KEY ("REGION_ID") 
+);
+
+insert into "SHANKAA"."REGION" values(100,'Americas','North-America'); 
+insert into "SHANKAA"."REGION" values(200,'Americas','South-America'); 
+insert into "SHANKAA"."REGION" values(300,'Asia','India'); 
+insert into "SHANKAA"."REGION" values(400,'Asia','Japan'); 
+insert into "SHANKAA"."REGION" values(500,'Europe','Germany'); 
+
+-- Create Sales table
+create column table "SHANKAA"."SALES"( 
+      "REGION_ID" INTEGER , 
+      "PRODUCT_ID" INTEGER , 
+      "SALES_AMOUNT" DOUBLE,       PRIMARY KEY ("REGION_ID", "PRODUCT_ID") ); 
+
+insert into "SHANKAA"."SALES" values(100,1,100); 
+insert into "SHANKAA"."SALES" values(100,2,90); 
+insert into "SHANKAA"."SALES" values(100,5,85); 
+insert into "SHANKAA"."SALES" values(200,2,80); 
+insert into "SHANKAA"."SALES" values(200,1,75); 
+insert into "SHANKAA"."SALES" values(300,3,85); 
+insert into "SHANKAA"."SALES" values(400,4,75); 
+insert into "SHANKAA"."SALES" values(500,1,65); 
+insert into "SHANKAA"."SALES" values(500,2,65); 
+
+GRANT SELECT ON SCHEMA "SHANKAA" TO _SYS_REPO WITH GRANT OPTION;
+
+--REPLACE SCHEMA_NAME WITH YOUR SCHEMA
+CREATE TYPE SHANKAA.TT_SALES AS TABLE (
+            SALES_AMOUNT DECIMAL,
+            NET_AMOUNT DECIMAL,
+            PRODUCT_NAME NVARCHAR(20),
+            REGION_NAME NVARCHAR(20),
+            SUB_REGION_NAME NVARCHAR(20)
+);
+
+CREATE PROCEDURE SHANKAA."PROCEDURE_SALES_REPORT"(
+            IN DISCOUNT INTEGER,
+            OUT OUTPUT_TABLE SHANKAA."TT_SALES" )
+LANGUAGE SQLSCRIPT SQL SECURITY INVOKER AS
+/*********BEGIN PROCEDURE SCRIPT ************/
+BEGIN
+
+var1 = SELECT T1.REGION_NAME, T1.SUB_REGION_NAME, T2.PRODUCT_ID, T2.SALES_AMOUNT
+            FROM SHANKAA.REGION AS T1
+            INNER JOIN
+            SHANKAA.SALES AS T2
+            ON T1.REGION_ID = T2.REGION_ID;
+
+var2 =	SELECT T1.REGION_NAME, T1.SUB_REGION_NAME, T1.PRODUCT_ID, T1.SALES_AMOUNT, T2.PRODUCT_NAME
+            FROM :var1 AS T1
+            INNER JOIN
+            SHANKAA.PRODUCT AS T2
+            ON T1.PRODUCT_ID = T2.PRODUCT_ID;
+
+OUTPUT_TABLE = SELECT SUM(SALES_AMOUNT) AS SALES_AMOUNT, SUM( SALES_AMOUNT - (SALES_AMOUNT * :DISCOUNT/ 100)) AS NET_AMOUNT,
+            PRODUCT_NAME, REGION_NAME, SUB_REGION_NAME
+            FROM :var2 
+            GROUP BY PRODUCT_NAME, REGION_NAME, SUB_REGION_NAME;
+
+END;
