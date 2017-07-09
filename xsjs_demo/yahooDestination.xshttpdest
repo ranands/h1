@@ -1,0 +1,12 @@
+// To define an HTTP destination, you can use the following code.
+
+host = "download.finance.yahoo.com";
+port = 80;  
+description = "my stock-price checker";
+useSSL = false;
+pathPrefix = "/d/quotes.csv?f=a";
+authType = none;
+useProxy = false;
+proxyHost = "proxy";
+proxyPort = 8080;
+timeout = 0;
