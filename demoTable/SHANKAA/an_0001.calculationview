@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="an_0001" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" analyticViewCompatibilityMode="true" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" rowCounterName="row.count">
+  <descriptions defaultDescription="an_0001"/>
+  <metadata changedAt="2017-07-25 05:42:36.37"/>
+  <defaultSchema schemaName="SHANKAA"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="CE1IDEA" type="DATA_BASE_TABLE">
+      <viewAttributes allViewAttributes="true"/>
+      <columnObject schemaName="SHANKAA" columnObjectName="CE1IDEA"/>
+    </DataSource>
+    <DataSource id="MARA" type="DATA_BASE_TABLE">
+      <viewAttributes allViewAttributes="true"/>
+      <columnObject schemaName="SHANKAA" columnObjectName="MARA"/>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="COLUMN_ENGINE">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VRGAR"/>
+        <viewAttribute id="VERSI"/>
+        <viewAttribute id="PERIO"/>
+        <viewAttribute id="KNDNR"/>
+        <viewAttribute id="ARTNR"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="GSBER"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="VVOQT_ME"/>
+        <viewAttribute id="VVOQT"/>
+        <viewAttribute id="VVIQT"/>
+        <viewAttribute id="VV250"/>
+        <viewAttribute id="VV260"/>
+        <viewAttribute id="VV270"/>
+        <viewAttribute id="VV280"/>
+        <viewAttribute id="VV370"/>
+        <viewAttribute id="VV380"/>
+        <viewAttribute id="VV390"/>
+        <viewAttribute id="VV400"/>
+        <viewAttribute id="VV010"/>
+        <viewAttribute id="VV140"/>
+        <viewAttribute id="MANDT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CE1IDEA">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VRGAR" source="VRGAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSI" source="VERSI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KNDNR" source="KNDNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ARTNR" source="ARTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GSBER" source="GSBER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VVOQT_ME" source="VVOQT_ME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VVOQT" source="VVOQT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VVIQT" source="VVIQT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV250" source="VV250"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV260" source="VV260"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV270" source="VV270"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV280" source="VV280"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV370" source="VV370"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV380" source="VV380"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV390" source="VV390"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV400" source="VV400"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV010" source="VV010"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV140" source="VV140"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      </input>
+      <filter>(&quot;VRGAR&quot; ='A')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="DafoJoin_1" cardinality="CN_1" dynamic="false" joinType="inner" optimizeJoinColumns="false">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VRGAR"/>
+        <viewAttribute id="VERSI"/>
+        <viewAttribute id="PERIO"/>
+        <viewAttribute id="KNDNR"/>
+        <viewAttribute id="ARTNR"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="GSBER"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="VVOQT_ME"/>
+        <viewAttribute id="VVOQT"/>
+        <viewAttribute id="VVIQT"/>
+        <viewAttribute id="VV250"/>
+        <viewAttribute id="VV260"/>
+        <viewAttribute id="VV270"/>
+        <viewAttribute id="VV280"/>
+        <viewAttribute id="VV370"/>
+        <viewAttribute id="VV380"/>
+        <viewAttribute id="VV390"/>
+        <viewAttribute id="VV400"/>
+        <viewAttribute id="VV010"/>
+        <viewAttribute id="VV140"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="MTART"/>
+        <viewAttribute hidden="true" id="JOIN$MANDT$MANDT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VRGAR" source="VRGAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSI" source="VERSI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KNDNR" source="KNDNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ARTNR" source="ARTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GSBER" source="GSBER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VVOQT_ME" source="VVOQT_ME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VVOQT" source="VVOQT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VVIQT" source="VVIQT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV250" source="VV250"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV260" source="VV260"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV270" source="VV270"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV280" source="VV280"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV370" source="VV370"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV380" source="VV380"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV390" source="VV390"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV400" source="VV400"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV010" source="VV010"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV140" source="VV140"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+      </input>
+      <input node="#MARA">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTART" source="MTART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ARTNR" source="MATNR"/>
+      </input>
+      <joinAttribute name="JOIN$MANDT$MANDT"/>
+      <joinAttribute name="ARTNR"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VRGAR"/>
+        <viewAttribute id="VERSI"/>
+        <viewAttribute id="PERIO"/>
+        <viewAttribute id="KNDNR"/>
+        <viewAttribute id="ARTNR"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="GSBER"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="VVOQT_ME"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="MTART"/>
+        <viewAttribute id="VVOQT"/>
+        <viewAttribute id="VVIQT"/>
+        <viewAttribute id="VV250"/>
+        <viewAttribute id="VV260"/>
+        <viewAttribute id="VV270"/>
+        <viewAttribute id="VV280"/>
+        <viewAttribute id="VV370"/>
+        <viewAttribute id="VV380"/>
+        <viewAttribute id="VV390"/>
+        <viewAttribute id="VV400"/>
+        <viewAttribute id="VV010"/>
+        <viewAttribute id="VV140"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DafoJoin_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VRGAR" source="VRGAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSI" source="VERSI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KNDNR" source="KNDNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ARTNR" source="ARTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GSBER" source="GSBER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VVOQT_ME" source="VVOQT_ME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTART" source="MTART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VVOQT" source="VVOQT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VVIQT" source="VVIQT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV250" source="VV250"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV260" source="VV260"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV270" source="VV270"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV280" source="VV280"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV370" source="VV370"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV380" source="VV380"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV390" source="VV390"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV400" source="VV400"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV010" source="VV010"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VV140" source="VV140"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Projection">
+    <descriptions/>
+    <attributes>
+      <attribute id="VRGAR" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Record Type"/>
+        <keyMapping columnObjectName="Projection" columnName="VRGAR"/>
+      </attribute>
+      <attribute id="VERSI" key="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Plan version (CO-PA)"/>
+        <keyMapping columnObjectName="Projection" columnName="VERSI"/>
+      </attribute>
+      <attribute id="PERIO" key="true" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Period/year"/>
+        <keyMapping columnObjectName="Projection" columnName="PERIO"/>
+      </attribute>
+      <attribute id="KNDNR" key="true" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Customer"/>
+        <keyMapping columnObjectName="Projection" columnName="KNDNR"/>
+      </attribute>
+      <attribute id="ARTNR" key="true" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Product number"/>
+        <keyMapping columnObjectName="Projection" columnName="ARTNR"/>
+      </attribute>
+      <attribute id="WERKS" key="true" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Plant"/>
+        <keyMapping columnObjectName="Projection" columnName="WERKS"/>
+      </attribute>
+      <attribute id="GSBER" key="true" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Business Area"/>
+        <keyMapping columnObjectName="Projection" columnName="GSBER"/>
+      </attribute>
+      <attribute id="VKORG" key="true" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Sales Organization"/>
+        <keyMapping columnObjectName="Projection" columnName="VKORG"/>
+      </attribute>
+      <attribute id="VVOQT_ME" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Base Unit of Measure"/>
+        <keyMapping columnObjectName="Projection" columnName="VVOQT_ME"/>
+      </attribute>
+      <attribute id="MATKL" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Material Group"/>
+        <keyMapping columnObjectName="Projection" columnName="MATKL"/>
+      </attribute>
+      <attribute id="MTART" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Material Type"/>
+        <keyMapping columnObjectName="Projection" columnName="MTART"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="VVOQT" order="12" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Ordered quantity"/>
+        <measureMapping columnObjectName="Projection" columnName="VVOQT"/>
+      </measure>
+      <measure id="VVIQT" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Invoiced quantity"/>
+        <measureMapping columnObjectName="Projection" columnName="VVIQT"/>
+      </measure>
+      <measure id="VV250" order="14" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Material Overhead"/>
+        <measureMapping columnObjectName="Projection" columnName="VV250"/>
+      </measure>
+      <measure id="VV260" order="15" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Administr. Overhead"/>
+        <measureMapping columnObjectName="Projection" columnName="VV260"/>
+      </measure>
+      <measure id="VV270" order="16" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Sales Overhead"/>
+        <measureMapping columnObjectName="Projection" columnName="VV270"/>
+      </measure>
+      <measure id="VV280" order="17" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Miscellaneous Costs"/>
+        <measureMapping columnObjectName="Projection" columnName="VV280"/>
+      </measure>
+      <measure id="VV370" order="18" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Gen.Admin. costs CCA"/>
+        <measureMapping columnObjectName="Projection" columnName="VV370"/>
+      </measure>
+      <measure id="VV380" order="19" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="General Market.costs"/>
+        <measureMapping columnObjectName="Projection" columnName="VV380"/>
+      </measure>
+      <measure id="VV390" order="20" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Distribution costs"/>
+        <measureMapping columnObjectName="Projection" columnName="VV390"/>
+      </measure>
+      <measure id="VV400" order="21" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Production costs"/>
+        <measureMapping columnObjectName="Projection" columnName="VV400"/>
+      </measure>
+      <measure id="VV010" order="22" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Revenue"/>
+        <measureMapping columnObjectName="Projection" columnName="VV010"/>
+      </measure>
+      <measure id="VV140" order="23" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cost of goods sold"/>
+        <measureMapping columnObjectName="Projection" columnName="VV140"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="TotalCost" hidden="false" order="24" aggregationType="sum" measureType="simple" calculateBeforeAggregation="false" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="20" scale="2">
+        <descriptions defaultDescription="TotalCost"/>
+        <formula>&quot;VV280&quot;+&quot;VV370&quot;+&quot;VV380&quot;+&quot;VV390&quot;+&quot;VV400&quot;</formula>
+      </measure>
+      <measure id="TotalOverhead" hidden="false" order="25" aggregationType="sum" measureType="simple" calculateBeforeAggregation="false" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="20" scale="2">
+        <descriptions defaultDescription="TotalOverhead"/>
+        <formula>&quot;VV250&quot;+&quot;VV260&quot;+&quot;VV270&quot;</formula>
+      </measure>
+      <measure id="PerCostVsCOGS" hidden="false" order="26" aggregationType="sum" measureType="simple" calculateBeforeAggregation="false" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="20" scale="2">
+        <descriptions defaultDescription="PerCostVsCOGS"/>
+        <formula>(&quot;TotalCost&quot;  )*100</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="22" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="267"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape modelObjectName="DafoJoin_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="207"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape modelObjectName="Projection" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="147"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

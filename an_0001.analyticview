@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Cube:cube xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Cube="http://www.sap.com/ndb/BiModelCube.ecore" schemaVersion="1.5" id="an_0001" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="internal">
+  <descriptions defaultDescription="an_0001"/>
+  <metadata changedAt="2017-07-25 05:40:51.211"/>
+  <defaultSchema schemaName="SHANKAA"/>
+  <localVariables/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <privateMeasureGroup id="MeasureGroup">
+    <attributes>
+      <attribute id="VRGAR" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Record Type"/>
+        <keyMapping schemaName="SHANKAA" columnObjectName="CE1IDEA" columnName="VRGAR"/>
+      </attribute>
+      <attribute id="VERSI" key="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Plan version (CO-PA)"/>
+        <keyMapping schemaName="SHANKAA" columnObjectName="CE1IDEA" columnName="VERSI"/>
+      </attribute>
+      <attribute id="PERIO" key="true" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Period/year"/>
+        <keyMapping schemaName="SHANKAA" columnObjectName="CE1IDEA" columnName="PERIO"/>
+      </attribute>
+      <attribute id="KNDNR" key="true" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Customer"/>
+        <keyMapping schemaName="SHANKAA" columnObjectName="CE1IDEA" columnName="KNDNR"/>
+      </attribute>
+      <attribute id="ARTNR" key="true" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Product number"/>
+        <keyMapping schemaName="SHANKAA" columnObjectName="CE1IDEA" columnName="ARTNR"/>
+      </attribute>
+      <attribute id="WERKS" key="true" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Plant"/>
+        <keyMapping schemaName="SHANKAA" columnObjectName="CE1IDEA" columnName="WERKS"/>
+      </attribute>
+      <attribute id="GSBER" key="true" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Business Area"/>
+        <keyMapping schemaName="SHANKAA" columnObjectName="CE1IDEA" columnName="GSBER"/>
+      </attribute>
+      <attribute id="VKORG" key="true" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Sales Organization"/>
+        <keyMapping schemaName="SHANKAA" columnObjectName="CE1IDEA" columnName="VKORG"/>
+      </attribute>
+      <attribute id="VVOQT_ME" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Base Unit of Measure"/>
+        <keyMapping schemaName="SHANKAA" columnObjectName="CE1IDEA" columnName="VVOQT_ME"/>
+      </attribute>
+      <attribute id="MATKL" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Material Group"/>
+        <keyMapping schemaName="SHANKAA" columnObjectName="MARA" columnName="MATKL"/>
+      </attribute>
+      <attribute id="MTART" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Material Type"/>
+        <keyMapping schemaName="SHANKAA" columnObjectName="MARA" columnName="MTART"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies>
+        <tableProxy centralTable="true">
+          <table schemaName="SHANKAA" columnObjectName="CE1IDEA"/>
+          <columnFilter columnName="VRGAR">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="A"/>
+          </columnFilter>
+        </tableProxy>
+        <tableProxy>
+          <table schemaName="SHANKAA" columnObjectName="MARA"/>
+        </tableProxy>
+      </tableProxies>
+      <joins>
+        <join>
+          <leftTable schemaName="SHANKAA" columnObjectName="CE1IDEA"/>
+          <rightTable schemaName="SHANKAA" columnObjectName="MARA"/>
+          <leftColumns>
+            <columnName>MANDT</columnName>
+            <columnName>ARTNR</columnName>
+          </leftColumns>
+          <rightColumns>
+            <columnName>MANDT</columnName>
+            <columnName>MATNR</columnName>
+          </rightColumns>
+          <properties cardinality="CN_1" joinOperator="Equal" joinType="inner"/>
+        </join>
+      </joins>
+      <layout>
+        <shapes>
+          <shape modelObjectName="CE1IDEA" modelObjectNameSpace="SHANKAA" modelObjectType="catalog">
+            <upperLeftCorner x="70" y="30"/>
+          </shape>
+          <shape modelObjectName="MARA" modelObjectNameSpace="SHANKAA" modelObjectType="catalog">
+            <upperLeftCorner x="434" y="30"/>
+          </shape>
+        </shapes>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="VVOQT" order="12" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Ordered quantity"/>
+        <measureMapping schemaName="SHANKAA" columnObjectName="CE1IDEA" columnName="VVOQT"/>
+      </measure>
+      <measure id="VVIQT" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Invoiced quantity"/>
+        <measureMapping schemaName="SHANKAA" columnObjectName="CE1IDEA" columnName="VVIQT"/>
+      </measure>
+      <measure id="VV250" order="14" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Material Overhead"/>
+        <measureMapping schemaName="SHANKAA" columnObjectName="CE1IDEA" columnName="VV250"/>
+      </measure>
+      <measure id="VV260" order="15" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Administr. Overhead"/>
+        <measureMapping schemaName="SHANKAA" columnObjectName="CE1IDEA" columnName="VV260"/>
+      </measure>
+      <measure id="VV270" order="16" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Sales Overhead"/>
+        <measureMapping schemaName="SHANKAA" columnObjectName="CE1IDEA" columnName="VV270"/>
+      </measure>
+      <measure id="VV280" order="17" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Miscellaneous Costs"/>
+        <measureMapping schemaName="SHANKAA" columnObjectName="CE1IDEA" columnName="VV280"/>
+      </measure>
+      <measure id="VV370" order="18" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Gen.Admin. costs CCA"/>
+        <measureMapping schemaName="SHANKAA" columnObjectName="CE1IDEA" columnName="VV370"/>
+      </measure>
+      <measure id="VV380" order="19" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="General Market.costs"/>
+        <measureMapping schemaName="SHANKAA" columnObjectName="CE1IDEA" columnName="VV380"/>
+      </measure>
+      <measure id="VV390" order="20" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Distribution costs"/>
+        <measureMapping schemaName="SHANKAA" columnObjectName="CE1IDEA" columnName="VV390"/>
+      </measure>
+      <measure id="VV400" order="21" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Production costs"/>
+        <measureMapping schemaName="SHANKAA" columnObjectName="CE1IDEA" columnName="VV400"/>
+      </measure>
+      <measure id="VV010" order="22" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Revenue"/>
+        <measureMapping schemaName="SHANKAA" columnObjectName="CE1IDEA" columnName="VV010"/>
+      </measure>
+      <measure id="VV140" order="23" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cost of goods sold"/>
+        <measureMapping schemaName="SHANKAA" columnObjectName="CE1IDEA" columnName="VV140"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="TotalCost" hidden="false" order="24" aggregationType="sum" measureType="simple" calculateBeforeAggregation="false" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="20" scale="2">
+        <descriptions defaultDescription="TotalCost"/>
+        <formula>&quot;VV280&quot;+&quot;VV370&quot;+&quot;VV380&quot;+&quot;VV390&quot;+&quot;VV400&quot;</formula>
+      </measure>
+      <measure id="TotalOverhead" hidden="false" order="25" aggregationType="sum" measureType="simple" calculateBeforeAggregation="false" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="20" scale="2">
+        <descriptions defaultDescription="TotalOverhead"/>
+        <formula>&quot;VV250&quot;+&quot;VV260&quot;+&quot;VV270&quot;</formula>
+      </measure>
+      <measure id="PerCostVsCOGS" hidden="false" order="26" aggregationType="sum" measureType="simple" calculateBeforeAggregation="false" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="20" scale="2">
+        <descriptions defaultDescription="PerCostVsCOGS"/>
+        <formula>(&quot;TotalCost&quot;)*100</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <sharedDimensions/>
+    <layout>
+      <shapes>
+        <shape modelObjectName="MEASURE_GROUP" modelObjectType="repository">
+          <upperLeftCorner x="300" y="200"/>
+        </shape>
+        <shape modelObjectName="LogicalView" modelObjectNameSpace="MeasureGroup" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateMeasureGroup>
+</Cube:cube>
